@@ -1,0 +1,68 @@
+인식(recognization) : 누구냐?
+
+감지(detection) : 어디에 있냐?
+
+Detection이 가장 발달한 분야가 얼굴인식
+
+Detection 문제는 속도의 문제, 몇십만번씩 물어본다.
+
+Scale, Rotation 등....
+
+
+
+속도를 어떻게 개선시키냐가, 가장 핵심적인 문제
+
+Scanning하는 횟수를 줄이거나, 분류기를 간단한것을 쓴다.
+
+Haar hog feature : 눈 주변은 이마보다 밝다. 흰색 : 1, 검은색이 -1
+커널크기가, 3*3, 5*5가 아니라, 20*20
+
+haarcacade 내부 파일에 사람 얼굴 검출하는 기능이 많이 담겨 있다.
+#Haar hog가 Gray에서 +-값을로 검출한다.
+
+#보통 정면은 잘되지만, 측면은 잘 안된다.
+
+Haar like는 기본적으로 회전된 이미지에 대해서는 잘 검출하지 못한다.
+보통 정면만 검출해도 +-10도 까지는 검출한다고 볼 수 있다.
+
+
+손가락은????
+
+손 동작을 어떻게 하며, 뒷 배경마다 다르다.
+그래서, 이 2개만 가지고, 얼굴인지 아닌지 해결한다.
+
+Calculate Haar-feature value = Pixel_sum(Rect_W - Pixel_Sum*Rect_B)
+
+Ada Boost
+간단한 분류기를 이용해, 복잡한 문제를 해결한다.
+
+앙상블하는데, Soft방식과 Hard 방식이 있다.
+Hard : 다 똑같이 적용
+Soft : 가중치를 다르게 적용
+
+
+
+Cascade decision process(폭포수 모델)
+
+단순한 알고리즘이지만, 성능이 좋다.
+
+
+
+Histogram of Oriented Gradients
+엣지의 방향성에 대한 히스토그램
+
+사람검출에는 분류기가 들어간다.
+
+만약, 10 20
+        50 100
+
+10에 대한 Gradient를 구하면, (10, 40)
+
+(10, 40)을 각도로 표시할 수 있다. 즉 -> : 0도, ^ : 90도 이런식으로
+
+이게 HOD
+
+Gradient 의 값(magnitude) 10^2 + 40^2
+
+Gradient는 magnitude와 direction 2개의 값을 갖는다.
+HOD 는 각 direction별, magnitude를 표시한것이다.

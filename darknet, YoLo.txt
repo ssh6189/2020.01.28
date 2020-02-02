@@ -1,0 +1,66 @@
+15.164.114.228
+iitp_multi_cv_b.ppk
+
+CUDA 사용 GPU = 1
+CUDNN : 1
+opencv 사용 opencv = 1
+
+ls : 현재 폴더 내에 있는 파일
+~/ : 현재 폴더
+
+vi : editor 진입
+a : add
+i : insert
+
+esc : 인서트모드와 커맨드모드 토글키
+:q! : 종료
+:wq! : 저장후 종료
+
+
+vi Makefile : 환경편집
+make : 컴파일
+
+darknet이라는 실시간 물체 인식할 수 있는것을 설치한것
+
+mkdir : 폴더 생성
+cd : 경로 추가
+
+lab을 이용하는것은 아마존웹서버 어디서인가에서 운용되고 있다.
+
+jupyter notebook --generate-config : 사용자 configration 생성
+
+파이썬내부
+sha1:0051d08d7a11:f5a989766689f5423cf9a1b7c12cb58c5ebed146
+
+
+vim ~/.jupyter/jupyter_notebook_config.py : 내가 어느폴더에 있든 읽어올 수 있다.
+
+ip 0.0.0.0 --port 8890
+
+jupyter notebook --ip 0.0.0.0 --port 8890
+
+
+
+
+
+pw:sha1:3860bbea6896:4f1b8c062d2e8a1d4b09e052fd7a4ca55cc68851
+
+#aws에서 학습시키기
+핵심 이것만 알자
+1.aws 접속
+2.jupyter notebook --generate-config 입력
+3./home/username/.jupyter : jupyter_notebook_config.py 입력
+4.파이썬 실행 후 from notebook.auth import passwd
+ passwd()
+quit()으로 탈출
+
+5. vim ~/.jupyter/jupyter_notebook_config.py 입력하고
+마지막 단으로가서, 
+c.NotebookApp.password = u'sha1:73bca967bb05:67d34d809ff91d5a27ef567b6f8d71c811a0f244'
+추가
+
+6.경로로 가서, jupyter notebook --ip 0.0.0.0 --port 8890(본인것)
+
+7.압축풀기 : unzip snowman.zip -d snowman
+
+8. ./darknet detector train ~/snowman/darknet.data ~/snowman/darknet-yolov3.cfg ~/snowman/darknet53.conv.74 > ~/snowman/can.log
